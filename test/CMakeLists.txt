@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.15...3.23)
+cmake_minimum_required(VERSION 4.0)
 
 project(CmakeConfigPackageTests LANGUAGES CXX)
 
@@ -34,7 +34,7 @@ target_link_libraries(
   tests
   PRIVATE cyan::cyan_warnings
           cyan::cyan_options
-          cyan::sample_library
+          cyan::cyan_entity
           Catch2::Catch2WithMain)
 
 if(WIN32 AND BUILD_SHARED_LIBS)

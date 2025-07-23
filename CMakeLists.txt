@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.21)
+cmake_minimum_required(VERSION 4.0)
 
 # This template attempts to be "fetch_content"-able
 # so that it works well with tools like CPM or other
@@ -18,9 +18,9 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 project(
   cyan
   VERSION 0.0.1
-  DESCRIPTION ""
+  DESCRIPTION "A game engine written in C++23"
   HOMEPAGE_URL "https://github.com/9-Developers/cyan"
-  LANGUAGES CXX C)
+  LANGUAGES CXX)
 
 include(cmake/PreventInSourceBuilds.cmake)
 include(ProjectOptions.cmake)
