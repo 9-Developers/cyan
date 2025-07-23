@@ -2,9 +2,9 @@ name: ci
 on:
   pull_request:
   release:
-    types: [published]
+    types:
+      - published
   push:
-    tags:
     branches:
       - main
       - develop
@@ -12,7 +12,6 @@ on:
 env:
   CLANG_TIDY_VERSION: "19.1.1"
   VERBOSE: 1
-
 
 jobs:
   Test:
@@ -117,7 +116,6 @@ jobs:
             enable_ipo: On
             build_shared: On
 
-
     steps:
       - name: Check for llvm version mismatches
         if: ${{ contains(matrix.compiler, 'llvm') && !contains(matrix.compiler, env.CLANG_TIDY_VERSION) }}
@@ -139,8 +137,7 @@ jobs:
       - name: Project Name
         uses: cardinalby/export-env-action@v2
         with:
-          envFile: '.github/constants.env'
-
+          envFile: ".github/constants.env"
 
       - name: Setup Cpp
         uses: aminya/setup-cpp@v1
@@ -153,7 +150,6 @@ jobs:
           vcpkg: false
           ccache: true
           clangtidy: ${{ env.CLANG_TIDY_VERSION }}
-
 
           cppcheck: true
 
@@ -196,7 +192,6 @@ jobs:
         with:
           files: |
             build/*-*${{ matrix.build_type }}*-*.*
-
 
       - name: Publish to codecov
         uses: codecov/codecov-action@v5
