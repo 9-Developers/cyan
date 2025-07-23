@@ -7,7 +7,7 @@ include(CheckCXXCompilerFlag)
 include(CheckCXXSourceCompiles)
 
 
-macro(myproject_supports_sanitizers)
+macro(cyan_supports_sanitizers)
   if((CMAKE_CXX_COMPILER_ID MATCHES ".*Clang.*" OR CMAKE_CXX_COMPILER_ID MATCHES ".*GNU.*") AND NOT WIN32)
 
     message(STATUS "Sanity checking UndefinedBehaviorSanitizer, it should be supported on this platform")
@@ -54,183 +54,183 @@ macro(myproject_supports_sanitizers)
   endif()
 endmacro()
 
-macro(myproject_setup_options)
-  option(myproject_ENABLE_HARDENING "Enable hardening" ON)
-  option(myproject_ENABLE_COVERAGE "Enable coverage reporting" OFF)
+macro(cyan_setup_options)
+  option(cyan_ENABLE_HARDENING "Enable hardening" ON)
+  option(cyan_ENABLE_COVERAGE "Enable coverage reporting" OFF)
   cmake_dependent_option(
-    myproject_ENABLE_GLOBAL_HARDENING
+    cyan_ENABLE_GLOBAL_HARDENING
     "Attempt to push hardening options to built dependencies"
     ON
-    myproject_ENABLE_HARDENING
+    cyan_ENABLE_HARDENING
     OFF)
 
-  myproject_supports_sanitizers()
+  cyan_supports_sanitizers()
 
-  if(NOT PROJECT_IS_TOP_LEVEL OR myproject_PACKAGING_MAINTAINER_MODE)
-    option(myproject_ENABLE_IPO "Enable IPO/LTO" OFF)
-    option(myproject_WARNINGS_AS_ERRORS "Treat Warnings As Errors" OFF)
-    option(myproject_ENABLE_USER_LINKER "Enable user-selected linker" OFF)
-    option(myproject_ENABLE_SANITIZER_ADDRESS "Enable address sanitizer" OFF)
-    option(myproject_ENABLE_SANITIZER_LEAK "Enable leak sanitizer" OFF)
-    option(myproject_ENABLE_SANITIZER_UNDEFINED "Enable undefined sanitizer" OFF)
-    option(myproject_ENABLE_SANITIZER_THREAD "Enable thread sanitizer" OFF)
-    option(myproject_ENABLE_SANITIZER_MEMORY "Enable memory sanitizer" OFF)
-    option(myproject_ENABLE_UNITY_BUILD "Enable unity builds" OFF)
-    option(myproject_ENABLE_CLANG_TIDY "Enable clang-tidy" OFF)
-    option(myproject_ENABLE_CPPCHECK "Enable cpp-check analysis" OFF)
-    option(myproject_ENABLE_PCH "Enable precompiled headers" OFF)
-    option(myproject_ENABLE_CACHE "Enable ccache" OFF)
+  if(NOT PROJECT_IS_TOP_LEVEL OR cyan_PACKAGING_MAINTAINER_MODE)
+    option(cyan_ENABLE_IPO "Enable IPO/LTO" OFF)
+    option(cyan_WARNINGS_AS_ERRORS "Treat Warnings As Errors" OFF)
+    option(cyan_ENABLE_USER_LINKER "Enable user-selected linker" OFF)
+    option(cyan_ENABLE_SANITIZER_ADDRESS "Enable address sanitizer" OFF)
+    option(cyan_ENABLE_SANITIZER_LEAK "Enable leak sanitizer" OFF)
+    option(cyan_ENABLE_SANITIZER_UNDEFINED "Enable undefined sanitizer" OFF)
+    option(cyan_ENABLE_SANITIZER_THREAD "Enable thread sanitizer" OFF)
+    option(cyan_ENABLE_SANITIZER_MEMORY "Enable memory sanitizer" OFF)
+    option(cyan_ENABLE_UNITY_BUILD "Enable unity builds" OFF)
+    option(cyan_ENABLE_CLANG_TIDY "Enable clang-tidy" OFF)
+    option(cyan_ENABLE_CPPCHECK "Enable cpp-check analysis" OFF)
+    option(cyan_ENABLE_PCH "Enable precompiled headers" OFF)
+    option(cyan_ENABLE_CACHE "Enable ccache" OFF)
   else()
-    option(myproject_ENABLE_IPO "Enable IPO/LTO" ON)
-    option(myproject_WARNINGS_AS_ERRORS "Treat Warnings As Errors" ON)
-    option(myproject_ENABLE_USER_LINKER "Enable user-selected linker" OFF)
-    option(myproject_ENABLE_SANITIZER_ADDRESS "Enable address sanitizer" ${SUPPORTS_ASAN})
-    option(myproject_ENABLE_SANITIZER_LEAK "Enable leak sanitizer" OFF)
-    option(myproject_ENABLE_SANITIZER_UNDEFINED "Enable undefined sanitizer" ${SUPPORTS_UBSAN})
-    option(myproject_ENABLE_SANITIZER_THREAD "Enable thread sanitizer" OFF)
-    option(myproject_ENABLE_SANITIZER_MEMORY "Enable memory sanitizer" OFF)
-    option(myproject_ENABLE_UNITY_BUILD "Enable unity builds" OFF)
-    option(myproject_ENABLE_CLANG_TIDY "Enable clang-tidy" ON)
-    option(myproject_ENABLE_CPPCHECK "Enable cpp-check analysis" ON)
-    option(myproject_ENABLE_PCH "Enable precompiled headers" OFF)
-    option(myproject_ENABLE_CACHE "Enable ccache" ON)
+    option(cyan_ENABLE_IPO "Enable IPO/LTO" ON)
+    option(cyan_WARNINGS_AS_ERRORS "Treat Warnings As Errors" ON)
+    option(cyan_ENABLE_USER_LINKER "Enable user-selected linker" OFF)
+    option(cyan_ENABLE_SANITIZER_ADDRESS "Enable address sanitizer" ${SUPPORTS_ASAN})
+    option(cyan_ENABLE_SANITIZER_LEAK "Enable leak sanitizer" OFF)
+    option(cyan_ENABLE_SANITIZER_UNDEFINED "Enable undefined sanitizer" ${SUPPORTS_UBSAN})
+    option(cyan_ENABLE_SANITIZER_THREAD "Enable thread sanitizer" OFF)
+    option(cyan_ENABLE_SANITIZER_MEMORY "Enable memory sanitizer" OFF)
+    option(cyan_ENABLE_UNITY_BUILD "Enable unity builds" OFF)
+    option(cyan_ENABLE_CLANG_TIDY "Enable clang-tidy" ON)
+    option(cyan_ENABLE_CPPCHECK "Enable cpp-check analysis" ON)
+    option(cyan_ENABLE_PCH "Enable precompiled headers" OFF)
+    option(cyan_ENABLE_CACHE "Enable ccache" ON)
   endif()
 
   if(NOT PROJECT_IS_TOP_LEVEL)
     mark_as_advanced(
-      myproject_ENABLE_IPO
-      myproject_WARNINGS_AS_ERRORS
-      myproject_ENABLE_USER_LINKER
-      myproject_ENABLE_SANITIZER_ADDRESS
-      myproject_ENABLE_SANITIZER_LEAK
-      myproject_ENABLE_SANITIZER_UNDEFINED
-      myproject_ENABLE_SANITIZER_THREAD
-      myproject_ENABLE_SANITIZER_MEMORY
-      myproject_ENABLE_UNITY_BUILD
-      myproject_ENABLE_CLANG_TIDY
-      myproject_ENABLE_CPPCHECK
-      myproject_ENABLE_COVERAGE
-      myproject_ENABLE_PCH
-      myproject_ENABLE_CACHE)
+      cyan_ENABLE_IPO
+      cyan_WARNINGS_AS_ERRORS
+      cyan_ENABLE_USER_LINKER
+      cyan_ENABLE_SANITIZER_ADDRESS
+      cyan_ENABLE_SANITIZER_LEAK
+      cyan_ENABLE_SANITIZER_UNDEFINED
+      cyan_ENABLE_SANITIZER_THREAD
+      cyan_ENABLE_SANITIZER_MEMORY
+      cyan_ENABLE_UNITY_BUILD
+      cyan_ENABLE_CLANG_TIDY
+      cyan_ENABLE_CPPCHECK
+      cyan_ENABLE_COVERAGE
+      cyan_ENABLE_PCH
+      cyan_ENABLE_CACHE)
   endif()
 
-  myproject_check_libfuzzer_support(LIBFUZZER_SUPPORTED)
-  if(LIBFUZZER_SUPPORTED AND (myproject_ENABLE_SANITIZER_ADDRESS OR myproject_ENABLE_SANITIZER_THREAD OR myproject_ENABLE_SANITIZER_UNDEFINED))
+  cyan_check_libfuzzer_support(LIBFUZZER_SUPPORTED)
+  if(LIBFUZZER_SUPPORTED AND (cyan_ENABLE_SANITIZER_ADDRESS OR cyan_ENABLE_SANITIZER_THREAD OR cyan_ENABLE_SANITIZER_UNDEFINED))
     set(DEFAULT_FUZZER ON)
   else()
     set(DEFAULT_FUZZER OFF)
   endif()
 
-  option(myproject_BUILD_FUZZ_TESTS "Enable fuzz testing executable" ${DEFAULT_FUZZER})
+  option(cyan_BUILD_FUZZ_TESTS "Enable fuzz testing executable" ${DEFAULT_FUZZER})
 
 endmacro()
 
-macro(myproject_global_options)
-  if(myproject_ENABLE_IPO)
+macro(cyan_global_options)
+  if(cyan_ENABLE_IPO)
     include(cmake/InterproceduralOptimization.cmake)
-    myproject_enable_ipo()
+    cyan_enable_ipo()
   endif()
 
-  myproject_supports_sanitizers()
+  cyan_supports_sanitizers()
 
-  if(myproject_ENABLE_HARDENING AND myproject_ENABLE_GLOBAL_HARDENING)
+  if(cyan_ENABLE_HARDENING AND cyan_ENABLE_GLOBAL_HARDENING)
     include(cmake/Hardening.cmake)
     if(NOT SUPPORTS_UBSAN 
-       OR myproject_ENABLE_SANITIZER_UNDEFINED
-       OR myproject_ENABLE_SANITIZER_ADDRESS
-       OR myproject_ENABLE_SANITIZER_THREAD
-       OR myproject_ENABLE_SANITIZER_LEAK)
+       OR cyan_ENABLE_SANITIZER_UNDEFINED
+       OR cyan_ENABLE_SANITIZER_ADDRESS
+       OR cyan_ENABLE_SANITIZER_THREAD
+       OR cyan_ENABLE_SANITIZER_LEAK)
       set(ENABLE_UBSAN_MINIMAL_RUNTIME FALSE)
     else()
       set(ENABLE_UBSAN_MINIMAL_RUNTIME TRUE)
     endif()
-    message("${myproject_ENABLE_HARDENING} ${ENABLE_UBSAN_MINIMAL_RUNTIME} ${myproject_ENABLE_SANITIZER_UNDEFINED}")
-    myproject_enable_hardening(myproject_options ON ${ENABLE_UBSAN_MINIMAL_RUNTIME})
+    message("${cyan_ENABLE_HARDENING} ${ENABLE_UBSAN_MINIMAL_RUNTIME} ${cyan_ENABLE_SANITIZER_UNDEFINED}")
+    cyan_enable_hardening(cyan_options ON ${ENABLE_UBSAN_MINIMAL_RUNTIME})
   endif()
 endmacro()
 
-macro(myproject_local_options)
+macro(cyan_local_options)
   if(PROJECT_IS_TOP_LEVEL)
     include(cmake/StandardProjectSettings.cmake)
   endif()
 
-  add_library(myproject_warnings INTERFACE)
-  add_library(myproject_options INTERFACE)
+  add_library(cyan_warnings INTERFACE)
+  add_library(cyan_options INTERFACE)
 
   include(cmake/CompilerWarnings.cmake)
-  myproject_set_project_warnings(
-    myproject_warnings
-    ${myproject_WARNINGS_AS_ERRORS}
+  cyan_set_project_warnings(
+    cyan_warnings
+    ${cyan_WARNINGS_AS_ERRORS}
     ""
     ""
     ""
     "")
 
-  if(myproject_ENABLE_USER_LINKER)
+  if(cyan_ENABLE_USER_LINKER)
     include(cmake/Linker.cmake)
-    myproject_configure_linker(myproject_options)
+    cyan_configure_linker(cyan_options)
   endif()
 
   include(cmake/Sanitizers.cmake)
-  myproject_enable_sanitizers(
-    myproject_options
-    ${myproject_ENABLE_SANITIZER_ADDRESS}
-    ${myproject_ENABLE_SANITIZER_LEAK}
-    ${myproject_ENABLE_SANITIZER_UNDEFINED}
-    ${myproject_ENABLE_SANITIZER_THREAD}
-    ${myproject_ENABLE_SANITIZER_MEMORY})
+  cyan_enable_sanitizers(
+    cyan_options
+    ${cyan_ENABLE_SANITIZER_ADDRESS}
+    ${cyan_ENABLE_SANITIZER_LEAK}
+    ${cyan_ENABLE_SANITIZER_UNDEFINED}
+    ${cyan_ENABLE_SANITIZER_THREAD}
+    ${cyan_ENABLE_SANITIZER_MEMORY})
 
-  set_target_properties(myproject_options PROPERTIES UNITY_BUILD ${myproject_ENABLE_UNITY_BUILD})
+  set_target_properties(cyan_options PROPERTIES UNITY_BUILD ${cyan_ENABLE_UNITY_BUILD})
 
-  if(myproject_ENABLE_PCH)
+  if(cyan_ENABLE_PCH)
     target_precompile_headers(
-      myproject_options
+      cyan_options
       INTERFACE
       <vector>
       <string>
       <utility>)
   endif()
 
-  if(myproject_ENABLE_CACHE)
+  if(cyan_ENABLE_CACHE)
     include(cmake/Cache.cmake)
-    myproject_enable_cache()
+    cyan_enable_cache()
   endif()
 
   include(cmake/StaticAnalyzers.cmake)
-  if(myproject_ENABLE_CLANG_TIDY)
-    myproject_enable_clang_tidy(myproject_options ${myproject_WARNINGS_AS_ERRORS})
+  if(cyan_ENABLE_CLANG_TIDY)
+    cyan_enable_clang_tidy(cyan_options ${cyan_WARNINGS_AS_ERRORS})
   endif()
 
-  if(myproject_ENABLE_CPPCHECK)
-    myproject_enable_cppcheck(${myproject_WARNINGS_AS_ERRORS} "" # override cppcheck options
+  if(cyan_ENABLE_CPPCHECK)
+    cyan_enable_cppcheck(${cyan_WARNINGS_AS_ERRORS} "" # override cppcheck options
     )
   endif()
 
-  if(myproject_ENABLE_COVERAGE)
+  if(cyan_ENABLE_COVERAGE)
     include(cmake/Tests.cmake)
-    myproject_enable_coverage(myproject_options)
+    cyan_enable_coverage(cyan_options)
   endif()
 
-  if(myproject_WARNINGS_AS_ERRORS)
+  if(cyan_WARNINGS_AS_ERRORS)
     check_cxx_compiler_flag("-Wl,--fatal-warnings" LINKER_FATAL_WARNINGS)
     if(LINKER_FATAL_WARNINGS)
       # This is not working consistently, so disabling for now
-      # target_link_options(myproject_options INTERFACE -Wl,--fatal-warnings)
+      # target_link_options(cyan_options INTERFACE -Wl,--fatal-warnings)
     endif()
   endif()
 
-  if(myproject_ENABLE_HARDENING AND NOT myproject_ENABLE_GLOBAL_HARDENING)
+  if(cyan_ENABLE_HARDENING AND NOT cyan_ENABLE_GLOBAL_HARDENING)
     include(cmake/Hardening.cmake)
     if(NOT SUPPORTS_UBSAN 
-       OR myproject_ENABLE_SANITIZER_UNDEFINED
-       OR myproject_ENABLE_SANITIZER_ADDRESS
-       OR myproject_ENABLE_SANITIZER_THREAD
-       OR myproject_ENABLE_SANITIZER_LEAK)
+       OR cyan_ENABLE_SANITIZER_UNDEFINED
+       OR cyan_ENABLE_SANITIZER_ADDRESS
+       OR cyan_ENABLE_SANITIZER_THREAD
+       OR cyan_ENABLE_SANITIZER_LEAK)
       set(ENABLE_UBSAN_MINIMAL_RUNTIME FALSE)
     else()
       set(ENABLE_UBSAN_MINIMAL_RUNTIME TRUE)
     endif()
-    myproject_enable_hardening(myproject_options OFF ${ENABLE_UBSAN_MINIMAL_RUNTIME})
+    cyan_enable_hardening(cyan_options OFF ${ENABLE_UBSAN_MINIMAL_RUNTIME})
   endif()
 
 endmacro()
