@@ -1,0 +1,6 @@
+/*!
+ * \namespace     cyan
+ * \brief         The parent namespace for Cyan Engine.
+ */
+namespace cyan {
+}
