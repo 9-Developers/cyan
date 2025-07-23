@@ -1,8 +1,8 @@
-#include "entity/entity.h"
-#include <gtest/gtest.h>
+#include "cyan/entity/entity.h"
+#include <catch2/catch_test_macros.hpp>
 
-TEST(cyan_entity, EntityID) {
-  ASSERT_EQ(0, cyan::entity::EntityID()) << "EntityID() should return 0";
-  ASSERT_EQ(1, cyan::entity::EntityID()) << "EntityID() should return 1";
-  ASSERT_EQ(2, cyan::entity::EntityID()) << "EntityID() should return 2";
+TEST_CASE("Entity IDs are generated", "[entity]") {
+  REQUIRE(cyan::entity::EntityID() == 0);
+  REQUIRE(cyan::entity::EntityID() == 1);
+  REQUIRE(cyan::entity::EntityID() == 1);
 }

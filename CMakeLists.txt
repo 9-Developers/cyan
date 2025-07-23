@@ -54,9 +54,6 @@ add_library(cyan::cyan_warnings ALIAS cyan_warnings)
 #add_library(cyan::cyan_options INTERFACE IMPORTED)
 #add_library(cyan::cyan_warnings INTERFACE IMPORTED)
 
-# configure files based on CMake configuration options
-add_subdirectory(configured_files)
-
 # Adding the src:
 add_subdirectory(src)
 
@@ -69,7 +66,6 @@ endif()
 include(CTest)
 
 if(BUILD_TESTING)
-  message(AUTHOR_WARNING "Building Tests. Be sure to check out test/constexpr_tests.cpp for constexpr testing")
   add_subdirectory(test)
 endif()
 
@@ -91,9 +87,6 @@ if(MSVC)
   set_target_properties(${all_targets} PROPERTIES VS_DEBUGGER_ENVIRONMENT "PATH=$(VC_ExecutablePath_x64);%PATH%")
 endif()
 
-# set the startup project for the "play" button in MSVC
-set_property(DIRECTORY PROPERTY VS_STARTUP_PROJECT intro)
-
 if(CMAKE_SKIP_INSTALL_RULES)
   return()
 endif()
@@ -104,11 +97,8 @@ include(cmake/PackageProject.cmake)
 # we know we want to ship
 cyan_package_project(
   TARGETS
-  intro
   cyan_options
   cyan_warnings
-  # FIXME: this does not work! CK
-  # PRIVATE_DEPENDENCIES_CONFIGURED project_options project_warnings
 )
 
 # Experience shows that explicit package naming can help make it easier to sort

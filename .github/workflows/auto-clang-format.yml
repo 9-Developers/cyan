@@ -1,6 +1,6 @@
 name: auto-clang-format
 on:
-  - pull_request_target
+  - pull_request
 
 jobs:
   build:

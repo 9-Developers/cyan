@@ -13,62 +13,57 @@
 
 #include <cstdint>
 
-namespace cyan {
 /*!
  * \namespace cyan::entity
  * \brief     Entity interface.
  */
-namespace entity {
+namespace cyan::entity {
 
-  /*!
-   * \brief     A component that has 2 (x and y) values.
-   * \tparam T  The vector type.
-   */
-  template <typename T>
-  struct Vector2 {
-    /*! \brief  X-value. */
-    T x;
-    /*! \brief  Y-value. */
-    T y;
-  };
+/*!
+ * \brief     A component that has 2 (x and y) values.
+ * \tparam T  The vector type.
+ */
+template<typename T> struct Vector2 {
+  /*! \brief  X-value. */
+  T x;
+  /*! \brief  Y-value. */
+  T y;
+};
 
-  /*!
-   * \brief     A component that has 3 (x, y, and z) values.
-   * \tparam T  The vector type.
-   */
-  template <typename T>
-  struct Vector3 {
-    /*! \brief  X-value. */
-    T x;
-    /*! \brief  Y-value. */
-    T y;
-    /*! \brief  Z-value. */
-    T z;
-  };
+/*!
+ * \brief     A component that has 3 (x, y, and z) values.
+ * \tparam T  The vector type.
+ */
+template<typename T> struct Vector3 {
+  /*! \brief  X-value. */
+  T x;
+  /*! \brief  Y-value. */
+  T y;
+  /*! \brief  Z-value. */
+  T z;
+};
 
-  /*!
-   * \brief     A component that has 4 (x, y, z, and w) values.
-   * \tparam T  The vector type.
-   */
-  template <typename T>
-  struct Vector4 {
-    /*! \brief  X-value. */
-    T x;
-    /*! \brief  Y-value. */
-    T y;
-    /*! \brief  Z-value. */
-    T z;
-    /*! \brief  W-value. */
-    T w;
-  };
+/*!
+ * \brief     A component that has 4 (x, y, z, and w) values.
+ * \tparam T  The vector type.
+ */
+template<typename T> struct Vector4 {
+  /*! \brief  X-value. */
+  T x;
+  /*! \brief  Y-value. */
+  T y;
+  /*! \brief  Z-value. */
+  T z;
+  /*! \brief  W-value. */
+  T w;
+};
 
-  /*!
-   * \brief   Get an Entity ID.
-   * \return  New Entity ID
-   */
-  uint64_t EntityID() noexcept;
+/*!
+ * \brief   Get an Entity ID.
+ * \return  New Entity ID
+ */
+uint64_t EntityID() noexcept;
 
-} // namespace entity
-} // namespace cyan
+} // namespace cyan::entity
 
 #endif // _CYAN_ENTITY_ENTITY_H_

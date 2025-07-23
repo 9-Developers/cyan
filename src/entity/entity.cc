@@ -8,11 +8,10 @@
  * \copyright   BSD 3-Clause
  */
 
-#include "entity/entity.h"
+#include "cyan/entity/entity.h"
 #include <cstdint>
 
-namespace cyan {
-namespace entity {
+namespace cyan::entity {
 
 uint64_t EntityID() noexcept {
   static uint64_t entity_id = 0;
@@ -20,5 +19,4 @@ uint64_t EntityID() noexcept {
   return entity_id++;
 }
 
-}  // namespace entity
-}  // namespace cyan
+} // namespace cyan::entity
