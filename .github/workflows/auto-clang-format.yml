@@ -3,7 +3,7 @@ on:
   - pull_request
 
 jobs:
-  build:
+  clang-format:
     runs-on: ubuntu-latest
     permissions:
       contents: write

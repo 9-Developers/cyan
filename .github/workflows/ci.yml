@@ -14,7 +14,7 @@ env:
   VERBOSE: 1
 
 jobs:
-  Test:
+  test:
     name: ${{matrix.os}} ${{matrix.compiler}} ${{matrix.build_type}} ${{matrix.packaging_maintainer_mode == 'ON' && '(maintainer mode)' || ''}}
     runs-on: ${{ matrix.os }}
     strategy:
