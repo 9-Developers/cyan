@@ -4,5 +4,5 @@
 TEST_CASE("Entity IDs are generated", "[entity]") {
   REQUIRE(cyan::entity::EntityID() == 0);
   REQUIRE(cyan::entity::EntityID() == 1);
-  REQUIRE(cyan::entity::EntityID() == 1);
+  REQUIRE(cyan::entity::EntityID() == 2);
 }
