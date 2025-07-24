@@ -1,9 +1,9 @@
-name: auto-clang-format
+name: Auto Clang Format
 on:
   - pull_request
 
 jobs:
-  clang-format:
+  auto-clang-format:
     runs-on: ubuntu-latest
     permissions:
       contents: write
