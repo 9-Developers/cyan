@@ -7,7 +7,7 @@ set(ENTITY_SOURCES
 add_library(cyan_entity STATIC ${ENTITY_SOURCES})
 add_library(cyan::cyan_entity ALIAS cyan_entity)
 
-target_link_libraries(cyan_entity PRIVATE myproject_options myproject_warnings)
+target_link_libraries(cyan_entity PRIVATE cyan_options cyan_warnings)
 
 target_include_directories(
   cyan_entity
